@@ -1,4 +1,4 @@
-//Implementation of SD algoirthm for vertex covering
+//Implementation of SD algoirthm for vertex covering for finding optimal clique set
 
 #include<iostream>
 #include<vector>
