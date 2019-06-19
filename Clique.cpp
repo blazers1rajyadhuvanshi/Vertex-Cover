@@ -1,15 +1,15 @@
-//Implementation of SD algoirthm for vertex covering for finding optimal clique set
+//Implementation of SD algoirthm for vertex covering in finding the optimal clique set
 
 #include<iostream>
 #include<vector>
 
 using namespace std;
 
-vector<vector<int>> complement_graph(vector<vector<int>> G);
+vector<vector<int> > complement_graph(vector<vector<int> > G);
 vector<int> complement_array(vector<int> arr,int n);
-vector<int> alom_algorithm(vector<vector<int>> Graph, int degree[], int n);
-vector<int> preprocess(vector<vector<int>> Graph, int degree[], int n);
-vector<int> SD_algorithm(vector<vector<int>> Graph, int degree[], int n);
+vector<int> alom_algorithm(vector<vector<int> > Graph, int degree[], int n);
+vector<int> preprocess(vector<vector<int> > Graph, int degree[], int n);
+vector<int> SD_algorithm(vector<vector<int> > Graph, int degree[], int n);
 
 int main(void)
 {
@@ -20,7 +20,7 @@ int main(void)
 	int m; // number of edges
 	cin >> n >> m; // inputs number of vertices and number of edges
 	
-	vector<vector<int>> Graph(n); // graph containing n vertices
+	vector<vector<int> > Graph(n); // graph containing n vertices
 	
 	int* degree = new int[n]; // stores the degree of the vertices
 	for(int i = 0; i < n; i++)//initializes degree to 0
@@ -51,7 +51,7 @@ int main(void)
     cout<< "\nSize of Clque: " << clique.size();
 }
 
-vector<int> alom_algorithm(vector<vector<int>> Graph, int degree[], int n)
+vector<int> alom_algorithm(vector<vector<int> > Graph, int degree[], int n)
 {
 	vector<int> vertexCover;
 	int maxDegreeVertex;
@@ -76,7 +76,7 @@ vector<int> alom_algorithm(vector<vector<int>> Graph, int degree[], int n)
 	return vertexCover;
 }
 
-vector<int> preprocess(vector<vector<int>> Graph, int degree[], int n)
+vector<int> preprocess(vector<vector<int> > Graph, int degree[], int n)
 {
 	vector<int> vertexCover;
 	vector<int> pendantVertex;
@@ -100,7 +100,7 @@ vector<int> preprocess(vector<vector<int>> Graph, int degree[], int n)
  	return vertexCover;
 }
 
-vector<int> SD_algorithm(vector<vector<int>> Graph, int degree[], int n)
+vector<int> SD_algorithm(vector<vector<int> > Graph, int degree[], int n)
 {
 	vector<int> vertexCover1 = preprocess(Graph, degree, n); // preprocessses
 	vector<int> vertexCover2 = alom_algorithm(Graph, degree, n); // alom_algorithm
@@ -120,7 +120,8 @@ vector<vector<int> > complement_graph(vector<vector<int> >G)
             mat[i][j]=1;
     }
     for(int i=0;i<n;i++)
-    {int m=G[i].size();
+    {
+        int m=G[i].size();
         for(int j=0;j<m;j++)
         {
             mat[i][G[i][j]]=0;
@@ -131,9 +132,8 @@ vector<vector<int> > complement_graph(vector<vector<int> >G)
     {
       for(int j=0;j<n;j++)
       {
-          if(mat[i][j]&&i!=j)
-          {
-              G1[i].push_back(j);
+          if(mat[i][j]&&i!=j){
+            G1[i].push_back(j);
               
           }
       }
