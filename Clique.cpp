@@ -113,7 +113,7 @@ vector<int> SD_algorithm(vector<vector<int> > Graph, int degree[], int n)
 vector<vector<int> > complement_graph(vector<vector<int> >G)
 {
     int n=G.size();
-    int mat[n][n];
+    vector<vector<int>> mat(n,vector<int>(n));
     for(int i=0;i<n;i++)
     {
         for(int j=0;j<n;j++)
